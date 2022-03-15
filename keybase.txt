@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/silasolla
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://silasolla.ml
+  * I am silasolla (https://keybase.io/silasolla) on keybase.
+  * I have a public key ASCVpRhaKZmSQqgLnPxaZabfOXMfSFPcKUKqrJwQkBz9BAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120e1bf83ffe827afd77b24a4c1f50eb1d0d0ec80fe3f9babdc7ae2e8da37e275fd0a",
+      "host": "keybase.io",
+      "kid": "012095a5185a29999242a80b9cfc5a65a6df39731f4853dc2942aaac9c10901cfd040a",
+      "uid": "29295182de2af2d505b1673e6fa52519",
+      "username": "silasolla"
+    },
+    "merkle_root": {
+      "ctime": 1647305042,
+      "hash": "3c977fd657410be9dce2d4aed34783f36e81be4db4b5f8c0eb31f043625daa2aad02e7bb39124d7fc9692be58d498025e882289277bbc72e3b05372f3fe675a9",
+      "hash_meta": "090b4344104296eb5d3e79461661fb0a0d7eb2bac855f6e0628e4aebfdadbcec",
+      "seqno": 22081787
+    },
+    "service": {
+      "entropy": "jfPzx2RQ4Yi243wAhixa8zdV",
+      "hostname": "silasolla.ml",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.9.2"
+  },
+  "ctime": 1647305074,
+  "expire_in": 504576000,
+  "prev": "0c9e59a1567a4c2ae0a6b497b2ed6fa9ecb8350d8ca4a9dfc4c4da4d63485523",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEglaUYWimZkkKoC5z8WmWm3zlzH0hT3ClCqqycEJAc/QQKp3BheWxvYWTESpcCDMQgDJ5ZoVZ6TCrgprSXsu1vqey4NQ2MpKnfxMTaTWNIVSPEII69uH+lw7n/JlLOwak0/WbXYJkYjnFdktPiKW6m8kBGAgHCo3NpZ8RApZZUvnPlFJTvVbhq3A/MpD4/Grx1mnXRNxoN0uXV6NomFHqeprLCwDaWg3Fa6E36PnOalziEUY2mqcVAaqB/DqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPa+rwR1gj+m3nlrE6qbsBmzvIR3d8Aso/ltiZiUNnVzo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/silasolla
+
+==================================================================
