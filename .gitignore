@@ -1,5 +1,6 @@
 # build output
 dist/
+.output/
 
 # generated types
 .astro/
@@ -20,5 +21,15 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# editor directories and files
+.vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# post images (hosted on R2, never commit to Git)
+public/posts/images/
+
+# wrangler local storage and cache
+.wrangler/

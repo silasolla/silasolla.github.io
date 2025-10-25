@@ -6,9 +6,28 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "typecheck": "astro check",
+    "lint": "astro check",
+    "format": "prettier --write \"**/*.{astro,ts,js,mjs,json,md}\"",
+    "format:check": "prettier --check \"**/*.{astro,ts,js,mjs,json,md}\"",
+    "editorconfig:check": "editorconfig-checker"
   },
   "dependencies": {
-    "astro": "^5.15.1"
+    "@astrojs/mdx": "^4.3.8",
+    "@astrojs/rss": "^4.0.13",
+    "astro": "^5.15.1",
+    "playwright": "^1.56.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "dotenv": "^16.4.5",
+    "editorconfig-checker": "^6.1.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.6.0",
+    "unist-util-visit": "^5.0.0",
+    "wrangler": "^4.45.0"
   }
 }
