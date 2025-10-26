@@ -7,16 +7,23 @@ import { getCurrentLocale, getTranslation } from '../i18n/translations';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const locale = getCurrentLocale(Astro.currentLocale);
 const defaultDescription = getTranslation(Astro.currentLocale, 'site.description');
+const siteTitle = getTranslation(Astro.currentLocale, 'site.title');
 
-const { title, description = defaultDescription } = Astro.props;
+const { title, description = defaultDescription, image } = Astro.props;
 
 // 開発環境でのフォールバック用
 const isDev = import.meta.env.DEV;
 const imageBaseUrl = import.meta.env.IMAGE_BASE_URL || '';
+
+// OGP用の絶対URL
+const siteUrl = import.meta.env.SITE_URL || Astro.site?.toString() || 'http://localhost:4321';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = image ? new URL(image, siteUrl).href : `${siteUrl}/avatar.png`;
 ---
 
 <!doctype html>
@@ -70,13 +77,19 @@ const imageBaseUrl = import.meta.env.IMAGE_BASE_URL || '';
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/avatar.png" />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@silasolla" />
+    <meta name="twitter:creator" content="@silasolla" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/avatar.png" />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Theme initialization script (runs before page renders to prevent flash) -->
     <script is:inline>
