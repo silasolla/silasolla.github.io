@@ -216,7 +216,7 @@ export const aboutDataJa: AboutData = {
       items: [
         {
           name: 'Bluesky の投稿を消すやつ',
-          url: 'https://gist.github.com/silasolla/806c4c50702fd743ef6789cedeea84cb',
+          url: 'https://github.com/silasolla/bsky-delete-bot',
           description:
             '自分の発言を削除して責任逃れをするための簡単な Python スクリプト．\nGitHub Actions で Workflow を動かして定期実行できます．',
         },
