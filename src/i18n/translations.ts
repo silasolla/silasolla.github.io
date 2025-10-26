@@ -37,6 +37,12 @@ export const translations = {
     'posts.rss-tech': '技術記事',
     'posts.rss-diary': '日記',
 
+    // RSS フィードタイトル
+    'rss.feed-title': '芳賀 雅樹 / Masaki Haga - すべての記事',
+    'rss.feed-title-news': '芳賀 雅樹 / Masaki Haga - お知らせ',
+    'rss.feed-title-tech': '芳賀 雅樹 / Masaki Haga - 技術記事',
+    'rss.feed-title-diary': '芳賀 雅樹 / Masaki Haga - 日記',
+
     // タグ
     'tag.news': 'お知らせ',
     'tag.tech': '技術',
@@ -119,6 +125,12 @@ export const translations = {
     'posts.rss-news': 'News',
     'posts.rss-tech': 'Tech',
     'posts.rss-diary': 'Diary',
+
+    // RSS feed titles
+    'rss.feed-title': 'Masaki Haga / 芳賀 雅樹 - All Posts',
+    'rss.feed-title-news': 'Masaki Haga / 芳賀 雅樹 - News',
+    'rss.feed-title-tech': 'Masaki Haga / 芳賀 雅樹 - Tech',
+    'rss.feed-title-diary': 'Masaki Haga / 芳賀 雅樹 - Diary',
 
     // Tags
     'tag.news': 'News',

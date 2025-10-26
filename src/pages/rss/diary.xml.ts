@@ -1,6 +1,7 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
+import { getTranslation } from '../../i18n/translations';
 
 export async function GET(context: APIContext) {
   const posts = await getCollection('posts', ({ data }) => {
@@ -10,9 +11,9 @@ export async function GET(context: APIContext) {
   const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
-    title: '芳賀 雅樹 / Masaki Haga - 日記',
+    title: getTranslation('ja', 'rss.feed-title-diary'),
     description: '日記のRSSフィード',
-    site: context.site?.toString() || 'https://silasol.la',
+    site: context.site?.toString() || import.meta.env.SITE_URL || 'http://localhost:4321',
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       description: post.data.description,

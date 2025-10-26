@@ -51,25 +51,25 @@ const ogImage = image ? new URL(image, siteUrl).href : `${siteUrl}/avatar.png`;
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="芳賀 雅樹 / Masaki Haga - すべての記事"
+      title={getTranslation(Astro.currentLocale, 'rss.feed-title')}
       href="/rss.xml"
     />
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="芳賀 雅樹 / Masaki Haga - お知らせ"
+      title={getTranslation(Astro.currentLocale, 'rss.feed-title-news')}
       href="/rss/news.xml"
     />
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="芳賀 雅樹 / Masaki Haga - 技術記事"
+      title={getTranslation(Astro.currentLocale, 'rss.feed-title-tech')}
       href="/rss/tech.xml"
     />
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="芳賀 雅樹 / Masaki Haga - 日記"
+      title={getTranslation(Astro.currentLocale, 'rss.feed-title-diary')}
       href="/rss/diary.xml"
     />
 
