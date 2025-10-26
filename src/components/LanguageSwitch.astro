@@ -1,0 +1,73 @@
+---
+import { getCurrentLocale, getTranslation } from '../i18n/translations';
+
+const currentLocale = getCurrentLocale(Astro.currentLocale);
+const currentPath = Astro.url.pathname;
+
+// 現在のパスから言語プレフィックスを除去
+const pathWithoutLocale = currentPath.replace(/^\/en/, '') || '/';
+
+// 言語切り替え用のURL
+const jaUrl = pathWithoutLocale;
+const enUrl = `/en${pathWithoutLocale}`;
+
+const jaLabel = getTranslation('ja', 'lang.switch.ja');
+const enLabel = getTranslation('en', 'lang.switch.en');
+---
+
+<div class="language-switch">
+  <a
+    href={jaUrl}
+    class={`lang-link ${currentLocale === 'ja' ? 'active' : ''}`}
+    aria-label={jaLabel}
+  >
+    JA
+  </a>
+  <span class="separator">|</span>
+  <a
+    href={enUrl}
+    class={`lang-link ${currentLocale === 'en' ? 'active' : ''}`}
+    aria-label={enLabel}
+  >
+    EN
+  </a>
+</div>
+
+<style>
+  .language-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .lang-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .lang-link:hover {
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .lang-link.active {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+  }
+
+  .separator {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 640px) {
+    .language-switch {
+      font-size: 0.85rem;
+    }
+  }
+</style>

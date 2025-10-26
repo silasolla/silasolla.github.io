@@ -1,0 +1,255 @@
+---
+import LanguageSwitch from './LanguageSwitch.astro';
+import { getTranslation } from '../i18n/translations';
+
+const siteTitle = getTranslation(Astro.currentLocale, 'site.title');
+const tagline = getTranslation(Astro.currentLocale, 'site.tagline');
+const themeToggleLabel = getTranslation(Astro.currentLocale, 'theme.toggle');
+const themeToggleTitle = getTranslation(Astro.currentLocale, 'theme.dark-light');
+---
+
+<header class="header" id="header">
+  <div class="header-bg-overlay"></div>
+  <div class="header-content">
+    <a href="/" class="site-title">
+      <img src="/avatar.png" alt="Masaki Haga" class="avatar" />
+      <div class="title-text">
+        <h1>{siteTitle}</h1>
+        <p class="tagline">{tagline}</p>
+      </div>
+    </a>
+    <div class="header-controls">
+      <LanguageSwitch />
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label={themeToggleLabel}
+        title={themeToggleTitle}
+      >
+        <svg
+          class="sun-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+          class="moon-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #5a8a5e 0%, #3d5f41 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease;
+  }
+
+  /* レスポンシブ背景画像 (画像を配置した場合に有効化) */
+  @media (max-width: 768px) {
+    .header {
+      background-image: url('/header-bg-mobile.jpg');
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1440px) {
+    .header {
+      background-image: url('/header-bg-tablet.jpg');
+    }
+  }
+
+  @media (min-width: 1441px) {
+    .header {
+      background-image: url('/header-bg-desktop.jpg');
+    }
+  }
+
+  .header-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(58, 90, 62, 0.6);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  :global([data-theme='dark']) .header {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  :global([data-theme='dark']) .header-bg-overlay {
+    background: rgba(29, 42, 30, 0.7);
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .site-title {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .title-text h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .tagline {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    font-style: italic;
+    color: #ffffff;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: rotate(180deg);
+  }
+
+  .theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+
+  .sun-icon {
+    display: none;
+  }
+
+  .moon-icon {
+    display: block;
+  }
+
+  :global([data-theme='dark']) .sun-icon {
+    display: block;
+  }
+
+  :global([data-theme='dark']) .moon-icon {
+    display: none;
+  }
+
+  @media (max-width: 1200px) {
+    .header-content {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .header {
+      padding: 1.5rem 0;
+    }
+
+    .header-content {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .site-title {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+    }
+
+    .title-text h1 {
+      font-size: 1.6rem;
+    }
+
+    .tagline {
+      font-size: 1rem;
+    }
+
+    .theme-toggle {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>
