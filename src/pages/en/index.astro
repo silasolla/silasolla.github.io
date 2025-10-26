@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { getTranslation } from '../i18n/translations';
+import { getTranslation } from '../../i18n/translations';
 
 const allPosts = await getCollection('posts', (post) => {
-  // 日本語版：lang が 'ja' または未定義の記事のみ
-  return post.data.lang === 'ja' || post.data.lang === undefined;
+  // 英語版：lang が 'en' または未定義の記事
+  return post.data.lang === 'en' || post.data.lang === undefined;
 });
 
 // ピン留めされた記事とそれ以外を分離
@@ -27,6 +27,8 @@ const latestPosts = regularPosts.slice(0, 5);
 
 const pageTitle = getTranslation(Astro.currentLocale, 'page.home');
 const siteName = getTranslation(Astro.currentLocale, 'site.name');
+const pinnedTitle = getTranslation(Astro.currentLocale, 'home.pinned');
+const importantBadge = getTranslation(Astro.currentLocale, 'home.important');
 const latestTitle = getTranslation(Astro.currentLocale, 'home.latest');
 const noPostsText = getTranslation(Astro.currentLocale, 'home.no-posts');
 const newsTag = getTranslation(Astro.currentLocale, 'tag.news');
@@ -34,7 +36,7 @@ const techTag = getTranslation(Astro.currentLocale, 'tag.tech');
 const diaryTag = getTranslation(Astro.currentLocale, 'tag.diary');
 
 function formatDate(date: Date): string {
-  return date.toLocaleDateString('ja-JP', {
+  return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -42,23 +44,20 @@ function formatDate(date: Date): string {
 }
 ---
 
-<Layout title={`${pageTitle} - ${siteName}`}>
+<Layout
+  title={`${pageTitle} - ${siteName}`}
+  description="Personal website of Masaki Haga (@silasolla). Trust, but verify."
+>
   {
     pinnedPosts.length > 0 && (
       <section class="pinned-section">
-        <h2 class="section-title pinned-title">
-          📌 {getTranslation(Astro.currentLocale, 'home.pinned')}
-        </h2>
+        <h2 class="section-title pinned-title">📌 {pinnedTitle}</h2>
 
         <ul class="posts-list pinned-posts">
           {pinnedPosts.map((post) => (
             <li class={`post-item ${post.data.important ? 'important-post' : ''}`}>
-              <a href={`/posts/${post.slug}`} class="post-link">
-                {post.data.important && (
-                  <span class="important-badge">
-                    {getTranslation(Astro.currentLocale, 'home.important')}
-                  </span>
-                )}
+              <a href={`/en/posts/${post.slug}`} class="post-link">
+                {post.data.important && <span class="important-badge">{importantBadge}</span>}
                 <div class="post-meta">
                   <time class="post-date" datetime={post.data.date.toISOString()}>
                     {formatDate(post.data.date)}
@@ -91,7 +90,7 @@ function formatDate(date: Date): string {
         <ul class="posts-list">
           {latestPosts.map((post) => (
             <li class="post-item">
-              <a href={`/posts/${post.slug}`} class="post-link">
+              <a href={`/en/posts/${post.slug}`} class="post-link">
                 <div class="post-meta">
                   <time class="post-date" datetime={post.data.date.toISOString()}>
                     {formatDate(post.data.date)}
@@ -117,7 +116,7 @@ function formatDate(date: Date): string {
 
 <style>
   .pinned-section {
-    padding: 2rem 0 1rem 0;
+    padding: 2rem 0;
     margin-bottom: 1rem;
   }
 
